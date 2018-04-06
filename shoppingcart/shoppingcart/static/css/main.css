@@ -1,0 +1,95 @@
+.well{
+    margin-bottom: 0%;
+}
+
+.description{
+    height: 45vh;
+}
+
+.image,.attr{
+    height: 25vh;
+}
+
+img{
+    max-width: 100%;
+    max-height: 100%;
+}
+#next, .checkout{
+    float: right;
+}
+.author_desc{
+    height: 35vh;
+}
+
+.navigation{
+    height: 20vh;
+}
+
+.preview{
+    height: 15vh;
+}
+
+.book-title{
+    height: 10vh;
+}
+h1, h2, h3{
+    margin: 0px;
+}
+.top-navbar{
+    margin-top: 0px;
+    margin-bottom: 0%;
+}
+#add2c{
+    height: 10vh;
+}
+.header{
+    font-family: Berkshire Swash, cursive;
+    color: rgba(46, 15, 119, 0.966);
+    background-color: lightgray;
+    padding: 2%;
+}
+.thumbnail,.details{
+    height: 200px;
+}
+.quantity{
+    position: relative;
+    height: 200px;
+    top: 50%;
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 1.5s;
+    animation: fadein 0.5s, fadeout 0.5s 1.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}

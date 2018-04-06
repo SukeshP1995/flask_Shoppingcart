@@ -1,0 +1,63 @@
+{% extends "index.html" %}
+{% block body %}
+  <style>
+    .thumbnail,.details{
+      height: 100px;
+    }
+    .header {
+      font-family: Berkshire Swash, cursive;
+      color: rgba(46, 15, 119, 0.966);
+      background-color: lightgray;
+      padding: 2%;
+    }
+  </style>
+  <div class="container">
+    <div class="row header">
+      <h1>My Orders</h1>
+    </div>
+    <hr>
+    {% if not session.logged_in %}
+      <div class=" row panel">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <label>Please Enter these details to view your orders</label>
+          <form action="POST">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <span class="input-group-addon">Name:</span>
+                  <input type="text" class="form-control" aria-label="...">
+                </div><br>
+                <div class="input-group">
+                  <span class="input-group-addon">+91</span>
+                  <input type="text" class="form-control" aria-label="...">
+                </div>
+                <br>
+                <div class="input-group">
+                  <button class="btn btn-success" type="submit">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <br>
+        </div>
+          <div class="col-md-1"></div>
+      </div>
+    {% endif %}
+    {% for order in orders %}
+      <div class="row well">
+        <div class="col-md-2">
+            <img src={{order.thumbnail}}>
+        </div>
+        <div class="col-md-10 details">
+          <p>Title: <span>{{ order.title }}</span></p>
+          <p>Price: <span>{{ order.price }}</span></p>
+          <p>Quantity: <span>{{ order.count }}</span></p>
+          <P>Timestamp: {{order.timestamp}}</P>
+        </div>
+
+      </div>
+      <hr>
+    {% endfor %}
+  </div>
+{% endblock %}

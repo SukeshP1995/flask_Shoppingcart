@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+{% block body %}
+  <div class="container panel">
+    <div class="row header">
+      <h1>My cart</h1>
+    </div>
+    <hr>
+    <div class="books_list">
+      {% for book in books_list %}
+        <div class="row" id="row_{{book.book_id}}">
+          <div class="col-md-2 well thumbnail">
+            <img src={{book.thumbnail}}> 
+          </div>
+          <div class="col-md-8 well details">
+            <p>Title: <span>{{ book.title }}</span></p>
+            <p>Price: <span>{{ book.price }}</span></p>
+            <p>Quantity: <span id="quantity_{{book.book_id}}">{{ book.count }}</span></p>
+            <p id="error_{{book.book_id}}"></p>
+          </div>
+          <div class="btn-group col-md-2 well quantity" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" onclick="plus('{{ book.book_id}}')"><label class="glyphicon glyphicon-plus" id="plus{{ book.book_id}}" ></label></button>
+            <button type="button" class="btn btn-default" onclick="minus('{{ book.book_id}}')"><label class="glyphicon glyphicon-minus" id="minus{{ book.book_id}}" ></label></button>
+          </div>          
+        </div>
+      {% endfor %}
+    </div>
+    <hr>
+    <div class="row well ">
+        <div class="col-md-6">
+          <p>Total no. of items in Cart:<span id="total"> {{ total }}</span> </p>
+        </div>
+        <div class="col-md-6">
+          <button class="btn btn-warning checkout" type="button" onclick="window.location.href='/checkout'">Proceed to checkout</button>
+        </div>
+    </div>
+  </div>        
+{% endblock %}

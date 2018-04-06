@@ -1,0 +1,73 @@
+{% extends "index.html" %}
+{% block body %}
+  <div class="container well">
+    <h2>User Login</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <form action="{{ url_for('signup') }}" method="post" class="">
+          <div class="form-group row">
+            {% if error %}<p class="error"><strong>Error:</strong> {{ error }}{% endif %}
+            <div class="col-md-6">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter email" name="email_id">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              <label for="username">Phone:</label>
+              <input type="text" class="form-control" name="phone" placeholder="Enter phone no." aria-label="...">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              <label for="username">Username:</label>
+              <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              <label for="password">Password:</label>
+              <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              <label for="retype_password">Password:</label>
+              <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="retype_password">
+            </div>
+          </div>
+          <div class="checkbox row">
+          <!-- <label><input type="checkbox" name="remember"> Remember me</label> -->
+          </div>
+          <button type="submit" class="btn btn-default">Signup</button>
+        </form>
+      </div>
+      <!-- <div class="vl col-md-2">
+
+      </div> -->
+      <div class="col-md-6">
+          {% for message in get_flashed_messages() %}
+            <div class="flash">{{ message }}</div>
+          {% endfor %}
+        <form action="{{ url_for('login') }}" method="post">
+          <div class="form-group row">
+            <div class="col-md-6">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email_id" placeholder="Enter email" name="email_id">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              <label for="pwd">Password:</label>
+              <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+            </div>
+          </div>
+          <div class="checkbox row">
+          <!-- <label><input type="checkbox" name="remember"> Remember me</label> -->
+          </div>
+          <button type="submit" class="btn btn-default">login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "index.html" %}
+{% block body %}
+  <div class="contianer">
+    <div class="row">
+        <hr aria-setsize="0.5px">
+    </div>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-6">
+        <div class="row"><button class="btn btn-warning" type="button" id="clear">Clear Cart</button></div><br>
+        {% set bill = [0] %}
+        {% for book in books_list %}
+          <div class="row panel panel-default book-details">
+              <div class="col-md-2">
+                <img src={{book.thumbnail}}>
+              </div>
+              <div class="col-md-6">
+                <p>Title: <span>{{ book.title }}</span></p>
+                <p>Price: <span>{{ book.price }}</span></p>
+              </div>
+              <p>Quantity: <span>{{ book.count }}</span></p>
+              <p>Total Price: <span>{{'%0.2f'| format(book.total|float)}}</span></p>
+          </div>
+          {% set _ = bill.append(bill.pop() + book.total|int) %}
+        {% endfor %}
+        {% set bill = bill.pop() %}
+        {% set cgst = bill*0.05 %}
+        {% set sgst = bill*0.05 %}
+        {% set total_bill = bill+cgst+sgst %}
+      </div>
+      <div class="col-md-3 panel well billing-info ">
+              <!-- Default panel contents -->
+        <div class="panel-heading"><span><h5>Delivering to:</h5></span></div>
+        <div class="panel-body">
+          <span><h3>Customer Name</h3></span>
+          <span><strong>Email id:</strong> customer@mail.com</span><br>
+          <span><strong>Phone:</strong></span><br>                
+          <span><strong>Address:</strong></span><br>
+          AddressContent<br><br>
+          <span><strong>Bill Amount:</strong></span><br><br>
+        </div>
+          <table class="table">
+            <tr>
+              <th></th>
+              <th></th>
+              <th>Amount</th>
+            </tr>
+            <tr>
+              <td></td>
+              
+              <th>subtotal: </th>
+              <td>{{'%0.2f'| format(bill|float)}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <th>CGST @ 5%: </th>
+              <td>{{'%0.2f'| format(cgst|float)}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <th>SGST @ 5%: </th>
+              <td>{{'%0.2f'| format(sgst|float)}}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <th>Total: </th>
+              <td>{{'%0.2f'| format(total_bill|float)}}</td>
+            </tr>
+          </table>
+          <button class="btn btn-success" id = "proceed" type="button">Proceed to pay</button>
+        </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+{% endblock %}

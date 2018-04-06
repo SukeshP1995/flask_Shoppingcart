@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+{% block body %}
+  <script>
+    var books = {{books|tojson}};
+  </script>
+  <div class="container">
+    <div class="col-sm-12">
+      <div class="row well">
+        <div class="col-md-4">
+          <div class="row image-details">
+            <div class="col-md-4 well image">
+              <img src="url" id="smallThumbnail">
+            </div>
+            <div class="col-md-8 well attr">
+                <p>Author: <span id = 'authors'></span></p>
+                <p>Price: <span id = 'retailPrice'></span></p>
+                <p>Publisher:<span id = 'publisher'></span></p>
+                <p>Year: <span id = 'publishedDate'></span></p>
+            </div>                    
+          </div>
+          <div class="row well navigation">
+            <button class="btn btn-primary" id = "previous" type="button" onclick="previous()">Previous</button>
+            <button class="btn btn-primary" id = "next" type="button" onclick="next()">Next</button>
+          </div>
+          <div class="row well" id = "add2c"> 
+            <div class="col-md-4">
+              <button class="btn btn-warning" id = "addtocart"  type="button">Add to cart</button>
+              <div id="snackbar">Added to cart..</div>
+            </div>
+            <div class="col-md-8">
+              <h3 id="cart_full"></h3>
+            </div>
+          </div>                
+        </div>
+        <div class="col-md-8">
+          <div class="row well book-title">
+            <div class="col-md-12">
+              <h1 id = "title"></h1>
+            </div>
+          </div>
+          <div class="row well description">
+            <div class = "col-md-12">
+              <p id = "description"></p>
+            </div>
+          </div>
+          <div class="row well preview">
+            <div class="col-md-12">
+              <div>
+                <a id="previewLink" href="url">Book Preview</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
